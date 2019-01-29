@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.team404.bookstore.entity.ShoppingCartEntity" table="ShoppingCart" schema="bookstore">
+        <id name="id">
+            <column name="id" sql-type="int(11)"/>
+        </id>
+        <property name="userid">
+            <column name="userid" sql-type="int(11)"/>
+        </property>
+        <property name="bookid">
+            <column name="bookid" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="quantity">
+            <column name="quantity" sql-type="int(11)"/>
+        </property>
+    </class>
+
+    <query name="getCartQuery">FROM ShoppingCartEntity WHERE userid = :userid</query>
+    <query name="DeleteItemsQuery">DELETE FROM ShoppingCartEntity WHERE id = :val</query>
+    <query name="DeleteItemsByUidQuery">DELETE FROM ShoppingCartEntity WHERE userid = :userid</query>
+    <query name="DeleteItemByIdQuery">DELETE FROM ShoppingCartEntity WHERE id = :id</query>
+    <query name="GetCartItemQuery">FROM ShoppingCartEntity WHERE userid = :userid AND bookid = :bookid</query>
+    <query name="UpdateItemQuantityQuery">UPDATE ShoppingCartEntity SET quantity = :quantity WHERE id = :id</query>
+</hibernate-mapping>

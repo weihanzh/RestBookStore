@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.team404.bookstore.entity.CountEntity" table="Counts" schema="bookstore">
+        <id name="id">
+            <column name="id" sql-type="int(11)"/>
+        </id>
+        <property name="counts">
+            <column name="counts" sql-type="int(11)"/>
+        </property>
+    </class>
+
+</hibernate-mapping>

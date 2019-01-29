@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.team404.bookstore.entity.BookEntity" table="BOOK" schema="bookstore">
+        <id name="bookid">
+            <column name="bookid" sql-type="varchar(20)" length="20"/>
+        </id>
+        <property name="title">
+            <column name="title" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="price">
+            <column name="price" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="author">
+            <column name="author" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="categoryid">
+            <column name="categoryid" sql-type="int(11)"/>
+        </property>
+        <property name="imgUrl">
+            <column name="imgURL" sql-type="varchar(200)" length="200" not-null="true"/>
+        </property>
+        <property name="description">
+            <column name="description" sql-type="varchar(2000)" length="2000" not-null="true"/>
+        </property>
+        <property name="publisherYear">
+            <column name="publisher_year" sql-type="int(11)" not-null="true"/>
+        </property>
+    </class>
+
+    <query name="ListBookQuery">FROM BookEntity</query>
+    <query name="ListBookByCidQuery">FROM BookEntity WHERE categoryid = :categoryid</query>
+
+</hibernate-mapping>

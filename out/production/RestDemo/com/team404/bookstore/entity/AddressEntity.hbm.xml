@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.team404.bookstore.entity.AddressEntity" table="Address" schema="bookstore">
+        <id name="id">
+            <column name="id" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="street">
+            <column name="street" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="province">
+            <column name="province" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="country">
+            <column name="country" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="zip">
+            <column name="zip" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="phone">
+            <column name="phone" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="userid">
+            <column name="userid" sql-type="int(11)"/>
+        </property>
+    </class>
+
+    <query name="getAddressByUidQuery">FROM AddressEntity WHERE userid = :userid</query>
+</hibernate-mapping>

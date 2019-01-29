@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.team404.bookstore.entity.OrderEntity" table="Orders" schema="bookstore">
+        <id name="id">
+            <column name="id" sql-type="int(11)"/>
+            <generator class="identity" />
+        </id>
+        <property name="userid">
+            <column name="userid" sql-type="int(11)"/>
+        </property>
+        <property name="generationtime">
+            <column name="generationtime" sql-type="datetime"/>
+        </property>
+        <property name="totalprice">
+            <column name="totalprice" sql-type="float" precision="-1"/>
+        </property>
+        <property name="addressid">
+            <column name="addressid" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="status">
+            <column name="status" sql-type="varchar(45)" length="45"/>
+        </property>
+        <property name="shipping">
+            <column name="shipping" sql-type="float" precision="-1"/>
+        </property>
+        <property name="tax">
+            <column name="tax" sql-type="float" precision="-1"/>
+        </property>
+        <property name="aftertaxprice">
+            <column name="aftertaxprice" sql-type="float" precision="-1"/>
+        </property>
+        <property name="amount">
+            <column name="amount" sql-type="int(11)"/>
+        </property>
+    </class>
+
+    <query name="GetOdersByUidQuery">FROM OrderEntity WHERE userid = :userid</query>
+    <query name="UpdateOrderStatusQuery">UPDATE OrderEntity SET status = :status WHERE id = :id</query>
+</hibernate-mapping>
